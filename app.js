@@ -458,7 +458,7 @@ app.post('/asaaspagamento', async (req, res) => {
 
       return res.status(200).send('Processo finalizado com sucesso.');
     } catch (error) {
-      console.error('[/asaaspagamento] Erro ao processar requisição /asaaspagamento:', error.message);
+      console.error(`[/asaaspagamento] Erro ao processar requisição /asaaspagamento id ${Id}:`, error.message);
       return res.status(200).send('Erro ao processar a requisição.');
     }
 });
@@ -591,7 +591,7 @@ app.post('/asaascriacaopagamento', async (req, res) => {
 
     return res.status(200).send('Cobrança realizada.');
   } catch (error) {
-    console.error('[/asaascriacaopagamento] Erro ao processar requisição /asaascriacaopagamento:', error.message);
+    console.error(`[/asaascriacaopagamento] Erro ao processar requisição criação do pagamento ${Id}:`, error.message);
     return res.status(200).send('Erro ao processar a requisição.');
   }
 });
