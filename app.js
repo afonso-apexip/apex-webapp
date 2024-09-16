@@ -109,6 +109,7 @@ app.post('/webhook', async (req, res) => {
       })
       .catch((error) => {
         console.error('Error:', error.response.data);
+        return res.status(200).send('Erro ao enviar POST.');
       });
 
 
@@ -135,7 +136,7 @@ app.post('/webhook', async (req, res) => {
         transporter.sendMail(mailOptions, (error, info) => {
           if (error) {
             console.log(error);
-            return res.status(500).send('Erro ao enviar e-mail');
+            return res.status(200).send('Erro ao enviar e-mail');
           } else {
             console.log('E-mail enviado: ' + info.response);
             return res.status(200).send('E-mail enviado com sucesso');
@@ -147,9 +148,10 @@ app.post('/webhook', async (req, res) => {
     } else {
       throw new Error('Contact or stage information not found in the response data.');
     }
+    return res.status(200).send('Processo finalizado com sucesso.');
   } catch (error) {
     console.error('Erro ao processar a requisição:', error.message);
-    return res.status(500).send('Erro ao processar a requisição');
+    return res.status(200).send('Erro ao processar a requisição');
   }
 });
 
